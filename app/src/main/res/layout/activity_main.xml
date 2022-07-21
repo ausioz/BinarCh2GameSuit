@@ -20,7 +20,6 @@
         app:layout_constraintVertical_bias="0" />
 
     <TextView
-        android:textStyle="bold"
         android:id="@+id/text_player_pick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -29,6 +28,7 @@
         android:text="Pemain 1"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/layout_btn_player"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/text_terminal"
@@ -50,7 +50,6 @@
         app:layout_constraintVertical_bias="0.32" />
 
     <TextView
-        android:textStyle="bold"
         android:id="@+id/text_com_pick"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -59,6 +58,7 @@
         android:text="COM"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/layout_btn_com"
         app:layout_constraintLeft_toRightOf="@id/text_terminal"
         app:layout_constraintRight_toRightOf="parent"
@@ -139,9 +139,20 @@
             android:background="@drawable/kertas" />
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_terminal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Mengunci Pilihan"
+        android:visibility="invisible"
+        />
+
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/refresh"
         app:layout_constraintBottom_toBottomOf="parent"
