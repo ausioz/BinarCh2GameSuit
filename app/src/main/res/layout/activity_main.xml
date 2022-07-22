@@ -154,9 +154,9 @@
         />
 
     <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="10dp"
+        android:id="@+id/btn_refresh"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:background="@drawable/refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1"
