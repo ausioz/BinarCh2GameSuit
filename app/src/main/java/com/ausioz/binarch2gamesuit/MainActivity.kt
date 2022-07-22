@@ -10,12 +10,11 @@ import com.ausioz.binarch2gamesuit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val textTitle = "<font color='#f6b26b'>Kertas</font><br>" +
-                            "<font color='#93c47d'>Gunting</font><br>"+
-                            "<font color='#c27ba0'>Batu</font>"
-    private var _binding: ActivityMainBinding? = null
+    private val textTitle = (R.string.app_title_text)
+
     private val pilihanSuit = arrayOf("Batu", "Gunting", "Kertas")
     private var status: String? = null
+    private var _binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,27 +24,26 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding?.root)
 
-        _binding?.textTitle?.text = Html.fromHtml(textTitle)
+        _binding?.textTitle?.text = (getText(textTitle))
         _binding?.textTerminal?.text = "VS"
 
 
         // 0: Batu      1: Gunting      2:Kertas
-        _binding?.playerBtnBatu?.setOnClickListener{
+        _binding?.playerBtnBatu?.setOnClickListener {
             clearPickBG()
             activePickBatu()
-            rule(pilihanSuit[0],pilihanSuit.random())
+            rule(pilihanSuit[0], pilihanSuit.random())
         }
-        _binding?.playerBtnGunting?.setOnClickListener{
+        _binding?.playerBtnGunting?.setOnClickListener {
             clearPickBG()
             activePickGunting()
-            rule(pilihanSuit[1],pilihanSuit.random())
+            rule(pilihanSuit[1], pilihanSuit.random())
         }
-        _binding?.playerBtnKertas?.setOnClickListener{
+        _binding?.playerBtnKertas?.setOnClickListener {
             clearPickBG()
             activePickKertas()
-            rule(pilihanSuit[2],pilihanSuit.random())
+            rule(pilihanSuit[2], pilihanSuit.random())
         }
-
 
 
     }
@@ -70,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun clearPickBG(){
+    fun clearPickBG() {
         _binding?.playerBtnBatu?.setBackgroundColor(Color.TRANSPARENT)
         _binding?.playerBtnBatu?.colorFilter = null
         _binding?.playerBtnGunting?.setBackgroundColor(Color.TRANSPARENT)
@@ -79,27 +77,29 @@ class MainActivity : AppCompatActivity() {
         _binding?.playerBtnKertas?.colorFilter = null
     }
 
-    fun activePickBatu(){
+    fun activePickBatu() {
         _binding?.playerBtnBatu?.setBackgroundColor(resources.getColor(R.color.active))
         _binding?.playerBtnGunting?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnKertas?.setColorFilter(Color.LTGRAY)
         _binding?.btnLockPick?.isVisible = true
         _binding?.btnLockPick?.text = "Kuci Pilihan : \nBatu"
     }
-    fun activePickGunting(){
+
+    fun activePickGunting() {
         _binding?.playerBtnBatu?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnGunting?.setBackgroundColor(resources.getColor(R.color.active))
         _binding?.playerBtnKertas?.setColorFilter(Color.LTGRAY)
         _binding?.btnLockPick?.isVisible = true
         _binding?.btnLockPick?.text = "Kuci Pilihan : \nGunting"
     }
-    fun activePickKertas(){
+
+    fun activePickKertas() {
         _binding?.playerBtnBatu?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnGunting?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnKertas?.setBackgroundColor(resources.getColor(R.color.active))
+        _binding?.btnLockPick?.isVisible = true
         _binding?.btnLockPick?.text = "Kuci Pilihan : \nKertas"
     }
-
 
 
 }
