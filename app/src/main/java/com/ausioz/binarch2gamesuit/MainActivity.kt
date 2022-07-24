@@ -62,57 +62,57 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun doRule() {
+    private fun doRule() {
         pemain2 = pilihanSuit.random()
         // 0: Batu      1: Gunting      2:Kertas
-        if (
+        status = if (
             pemain1 == pilihanSuit[0] && pemain2 == pilihanSuit[1] ||
             pemain1 == pilihanSuit[1] && pemain2 == pilihanSuit[2] ||
             pemain1 == pilihanSuit[2] && pemain2 == pilihanSuit[0]
         ) {
-            status = "Pemain 1 MENANG!"
+            "Pemain 1 MENANG!"
         } else if (
             pemain1 == pilihanSuit[0] && pemain2 == pilihanSuit[2] ||
             pemain1 == pilihanSuit[1] && pemain2 == pilihanSuit[0] ||
             pemain1 == pilihanSuit[2] && pemain2 == pilihanSuit[1]
         ) {
-            status = "COM MENANG!"
+            "COM MENANG!"
         } else {
-            status = "DRAW!"
+            "DRAW!"
         }
     }
 
-    fun activePickBatu() {
+    private fun activePickBatu() {
         _binding?.playerBtnBatu?.setBackgroundColor(resources.getColor(R.color.active))
         _binding?.playerBtnGunting?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnKertas?.setColorFilter(Color.LTGRAY)
         _binding?.btnLockPick?.isVisible = true
-        _binding?.btnLockPick?.text = "Kuci Pilihan\nBatu"
+        _binding?.btnLockPick?.text = "Kunci Pilihan\nBatu"
     }
 
-    fun activePickGunting() {
+    private fun activePickGunting() {
         _binding?.playerBtnBatu?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnGunting?.setBackgroundColor(resources.getColor(R.color.active))
         _binding?.playerBtnKertas?.setColorFilter(Color.LTGRAY)
         _binding?.btnLockPick?.isVisible = true
-        _binding?.btnLockPick?.text = "Kuci Pilihan\nGunting"
+        _binding?.btnLockPick?.text = "Kunci Pilihan\nGunting"
     }
 
-    fun activePickKertas() {
+    private fun activePickKertas() {
         _binding?.playerBtnBatu?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnGunting?.setColorFilter(Color.LTGRAY)
         _binding?.playerBtnKertas?.setBackgroundColor(resources.getColor(R.color.active))
         _binding?.btnLockPick?.isVisible = true
-        _binding?.btnLockPick?.text = "Kuci Pilihan\nKertas"
+        _binding?.btnLockPick?.text = "Kunci Pilihan\nKertas"
     }
 
-    fun inactivePickCom() {
+    private fun inactivePickCom() {
         _binding?.comBtnBatu?.setColorFilter(Color.LTGRAY)
         _binding?.comBtnGunting?.setColorFilter(Color.LTGRAY)
         _binding?.comBtnKertas?.setColorFilter(Color.LTGRAY)
     }
 
-    fun refreshPick() {
+    private fun refreshPick() {
         _binding?.btnLockPick?.isVisible = false
         _binding?.playerBtnBatu?.setBackgroundColor(Color.TRANSPARENT)
         _binding?.playerBtnBatu?.colorFilter = null
@@ -128,14 +128,14 @@ class MainActivity : AppCompatActivity() {
         _binding?.comBtnKertas?.colorFilter = null
     }
 
-    fun disablePick() {
+    private fun disablePick() {
         _binding?.playerBtnBatu?.isClickable = false
         _binding?.playerBtnGunting?.isClickable = false
         _binding?.playerBtnKertas?.isClickable = false
         _binding?.btnLockPick?.isVisible = false
     }
 
-    fun enablePick() {
+    private fun enablePick() {
         _binding?.playerBtnBatu?.isClickable = true
         _binding?.playerBtnGunting?.isClickable = true
         _binding?.playerBtnKertas?.isClickable = true
@@ -143,19 +143,23 @@ class MainActivity : AppCompatActivity() {
 
     fun comPickReveal() {
         // 0: Batu      1: Gunting      2:Kertas
-        if (pemain2 == pilihanSuit[0]) {
-            _binding?.comBtnBatu?.setBackgroundColor(resources.getColor(R.color.active))
-            _binding?.comBtnBatu?.colorFilter = null
-        } else if (pemain2 == pilihanSuit[1]) {
-            _binding?.comBtnGunting?.setBackgroundColor(resources.getColor(R.color.active))
-            _binding?.comBtnGunting?.colorFilter = null
-        } else {
-            _binding?.comBtnKertas?.setBackgroundColor(resources.getColor(R.color.active))
-            _binding?.comBtnKertas?.colorFilter = null
+        when (pemain2) {
+            pilihanSuit[0] -> {
+                _binding?.comBtnBatu?.setBackgroundColor(resources.getColor(R.color.active))
+                _binding?.comBtnBatu?.colorFilter = null
+            }
+            pilihanSuit[1] -> {
+                _binding?.comBtnGunting?.setBackgroundColor(resources.getColor(R.color.active))
+                _binding?.comBtnGunting?.colorFilter = null
+            }
+            else -> {
+                _binding?.comBtnKertas?.setBackgroundColor(resources.getColor(R.color.active))
+                _binding?.comBtnKertas?.colorFilter = null
+            }
         }
     }
 
-    fun playTerminal() {
+    private fun playTerminal() {
         inactivePickCom()
         val count: CountDownTimer = object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
