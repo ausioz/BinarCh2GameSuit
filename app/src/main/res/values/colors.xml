@@ -12,4 +12,5 @@
     <color name="player_win">#0070c0</color>
     <color name="com_win">#ff0000</color>
     <color name="draw">#92d050</color>
+    <color name="player_com">#00b0f0</color>
 </resources>
