@@ -126,6 +126,7 @@ class MainActivity : AppCompatActivity() {
         _binding?.playerBtnKertas?.colorFilter = null
         _binding?.comBtnKertas?.setBackgroundColor(Color.TRANSPARENT)
         _binding?.comBtnKertas?.colorFilter = null
+        _binding?.textTerminal?.setTextColor(Color.BLACK)
     }
 
     private fun disablePick() {
@@ -159,6 +160,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun terminalText() {
+        when (status) {
+            "Pemain 1 MENANG!" -> {
+                _binding?.textTerminal?.setTextColor(resources.getColor(R.color.player_win))
+            }
+            "COM MENANG!" -> {
+                _binding?.textTerminal?.setTextColor(resources.getColor(R.color.com_win))
+            }
+            else -> {
+                _binding?.textTerminal?.setTextColor(resources.getColor(R.color.draw))
+            }
+        }
+    }
+
     private fun playTerminal() {
         inactivePickCom()
         val count: CountDownTimer = object : CountDownTimer(3000, 1000) {
@@ -172,6 +187,7 @@ class MainActivity : AppCompatActivity() {
             override fun onFinish() {
                 _binding?.textTerminal?.text = status
                 comPickReveal()
+                terminalText()
                 Log.d("Pemain COM Input", "$pemain2")
                 Log.d("Hasil pertandingan,", "$status")
                 _binding?.btnRefresh?.isClickable = true
